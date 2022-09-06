@@ -1,0 +1,299 @@
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+:root{
+    --header-font: 'Noto Sans', sans-serif;
+    --subheader-font: 'Ubuntu', serif;
+    --body-font: 'PT Serif', sans-serif;
+    --background-color: #FFFFFF;
+    --hf-color: #F7F6F2;
+    --mf-color: #4B6587;
+    --box-background: #171717;
+    --selection-color: #c9bf38d9;
+}
+
+body{
+    background-color: var(--background-color);
+    font-family: var(--body-font);
+    line-height: 1.5;
+    letter-spacing: 1.5px;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--mf-color);
+    width: 85%;
+    margin: auto;
+}
+
+.centered {
+    text-align: center;
+}
+
+.on-focus {
+    background-color: var(--selection-color);
+}
+
+.divider {
+    width: 90%;
+    margin: 20px auto;
+    border-top: 1px;
+    background-color: var(--box-background);
+}
+
+.emphasis {
+    font-weight: bold;
+}
+
+
+/* link handling */
+a {
+    text-decoration: none;
+}
+
+::selection{
+    background: var(--selection-color);
+}
+
+
+/* navigation bar styling  */
+.nav-content {
+    background-color: var(--box-background);
+    color: var(--background-color);
+    padding: 0 17px;
+    margin-bottom: 50px;
+    margin-top: 5px;
+    
+}
+.nav-content a{
+    color: var(--background-color);
+}
+.navbar-elements {
+    display: inline-block;
+    vertical-align: middle;
+    width: 48%;
+    padding-top: 12.5px;
+    padding-bottom: 12.5px;
+}
+
+ul {
+    list-style: none;
+}
+
+.nav-item{
+    width: auto;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 15px;
+    font-weight: 200;
+    margin-right: 10%;
+    
+}
+
+.nav-item a:hover {
+    color:#bfbfbf;
+}
+
+.navbar-brand {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 20px;
+    font-weight: 800;
+
+}
+
+
+
+
+
+/* HEADER SECTION STYLING  */
+
+#header {
+    background-image: url('../images/main-page.jpeg');
+    color: var(--background-color);
+    height: 550px;
+    background-position: center;
+    /* background-repeat: no-repeat; */
+    background-size: cover;
+    margin-bottom: 80px;
+    
+
+}
+
+.header-cover {
+    height: 100%;
+    backdrop-filter: contrast(50%);
+}
+
+.header-title{
+    width: 70%;
+    font-family: var(--header-font);
+    font-weight: 600;
+    font-size: 50px;
+    margin: 0 auto 30px auto;
+    padding-top: 80px
+}
+
+
+.hearder-info {
+width: 70%;
+margin: 0 auto 80px auto;
+font-size: 20px;
+}
+
+.btn-attention-header{
+    padding: 17px 30px;
+    color: var(--box-background);
+    font-family: var(--header-font);
+    font-size: 24px;
+    margin-bottom: 50px;
+    border-radius: 5px;
+}
+
+.btn-attention-header:hover{
+    background-color: #9a8e0c;
+}
+
+.btn-attention-header:active{
+    background-color: #5b8bca;
+}
+
+/* STYLING SUMMERY SECTION  */
+
+.about-summary{
+    font-family: var(--header-font);
+    color: var(--box-background);
+    width: 100%;
+}
+
+.about-summary-item{
+    display: inline-block;
+    width: 32%;
+    vertical-align: top;
+}
+
+.abut-summary-icon{
+    color: var(--box-background);
+    font-size: 32px;
+    margin-bottom: 14px;
+    font-weight: 700;
+}
+.about-header{
+    font-weight: 500;
+    font-size: 26px;
+}
+
+.about-summary-info {
+    margin: 14px auto 40px auto;
+    font-family: var(--body-font);
+    width: 80%;
+}
+
+
+/* VENUE DESCRIPTION STYLING  */
+
+.venue-info {
+    width: 90%;
+    margin: 70px auto;
+    color: var(--box-background);
+}
+
+
+/* HOW IT WORKS SECTION */
+
+.explain-product {
+    font-family: var(--header-font);
+    color: var(--box-background);
+}
+
+.explain-product-entry{
+    display: inline-block;
+    vertical-align: top;
+    width: 48%;
+    margin: 50px auto;
+    height: 80%;
+}
+
+.explain-photo{
+    width: auto;
+    height: auto;
+    max-width: 98%;
+    max-height: 250px;
+}
+
+.about-header{
+    margin: 20px auto;
+}
+
+.explain-info {
+    font-family: var(--body-font);
+    text-align: center;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+/* FOOTER STYLING  */
+.footer {
+    background-color: var(--box-background);
+    margin: 50px auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: var(--background-color);
+}
+.header-items {
+    width: auto;
+    margin: 10px 17px;
+    font-size: 14px;
+    font-weight: 300;
+    
+}
+
+.footer-entry {
+    display: inline-block;
+    vertical-align: top;
+}
+.social {
+    margin-bottom: 10px;
+}
+
+.social-icon {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.copyright {
+
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--hf-color);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

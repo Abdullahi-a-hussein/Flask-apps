@@ -1,6 +1,53 @@
-{% extend 'header.html' %}
+{% extends 'header.html' %}
 {% block content %}
+<section id="header" class="centered">
+    <div class="header-cover">
+        <header>
+            <h1 class="header-title">BORED WORDKING AT YOUR DESK? EXPLORE YOUR CITY</h1>
+            <p class="hearder-info">Discover everyday places to get your work done, from coffee houses to your new favorite restuarent</p>
+            <a href="{{ url_for('cafes') }}" class="btn-attention-header on-focus">EXPLORE TRONTO</a>
+        </header>
+    </div>
+</section>
+<section id="landing" class="container centered">
+    <div class="about-summary">
+        
+        <div class="about-summary-item">
+            <p class="abut-summary-icon"><i class="fa-solid fa-laptop-code"></i></i></p>
+            <h2 class="about-header">BE PRODUCTIVE</h2>
+            <p class="about-summary-info">Find locations with <strong>internet, power outlet</strong> and seats</p>
+        </div>
+        <div class="about-summary-item">
+            <p class="abut-summary-icon"><i class="fa-regular fa-face-smile"></i></p>
+            <h2 class="about-header">FEEL WELCOME</h2>
+            <p class="about-summary-info">Get together with like minded people</p>
+        </div>
+        <div class="about-summary-item">
+            <p class="abut-summary-icon"><i class="fa-solid fa-lightbulb"></i></p>
+            <h2 class="about-header">STAY INSPIRED</h2>
+            <p class="about-summary-info">Uncover new ideas inspired by smell of freshly brewed coffee and cakes</p>
+        </div>
+    </div>
+    <hr class="divider">
+    <div class="venue-info">
+        <p class="venue-content">Remote work friendly locations that <span class="emphasis">understand and encourage remote work culture.</span> All locations are user vetted </p>
+    </div>
+    <hr class="divider">
 
-
-
+    <div class="explain-product">
+        <h1 class="explain-product-header">HOW IT WORKS</h1>
+        <div class="explain-product-entry">
+            <img src="{{ url_for('static', filename='images/map-img.png') }}" alt="google maps wiht pinned locations" class="explain-photo">
+            <h2 class="about-header">Find Quiet Locale Gems</h2>
+            <p class="explain-info">Coffee, Quiet, wifi. Find what you need to do your best at your favourite coffe shops around your city </p>
+        </div>
+        <div class="explain-product-entry">
+            <img src="{{ url_for('static', filename='images/group-people.jpeg') }}" alt="human headshots" class="explain-photo">
+            <h2 class="about-header">Meet Like-minded People</h2>
+            <p class="explain-info">Meet and collaborate with like-minded people. Meet and greet with friends you never met</p>
+        </div>
+    </div>
+</section>
+<hr class="divider">
+{% include "footer.html" %}
 {% endblock %}

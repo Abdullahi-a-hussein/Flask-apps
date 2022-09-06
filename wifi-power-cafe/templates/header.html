@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Montserrat:wght@400;900&family=Noto+Sans:wght@400;500;700;900&family=PT+Serif:wght@400;700&family=Ubuntu+Mono:ital@1&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/f17e85e884.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <title>Work from Cafes</title>
+    <title>Remote work Friendly</title>
 </head>
 <body>
     <nav class="nav-content">
-        
-        <a href="" class="navbar-brand">Remote Work Friendly</a>
-        <ul class="navbar-items">
-            <ul class="nav-items">
-            <li class="nav-item"><a href="">Search City</a></li>
-            <li class="nav-item"><a href="">Add cafe</a></li>
-            <li class="nav-item"><a href="">Join Community</a></li>
-        </ul>
+        <a href="{{ url_for('home') }}" class="navbar-elements"><i class="fa-solid fa-globe"></i> Remote Work Friendly</a>
+        <div class="navbar-elements navbar-tems">
+            <ul>
+                <li class="nav-item"><a href=""><i class="fa-sharp fa-solid fa-magnifying-glass"></i> Search City</a></li>
+                <li class="nav-item"><a href=""><i class="fa-solid fa-circle-plus"></i> Add Cafe</a></li>
+                <li class="nav-item"><a href=""><i class="fa-solid fa-users"></i> Join Community</a></li>
+            </ul>
+        </div>
     </nav>
 {% block content %}
 
 {% endblock%}
-</body>
-</html>
