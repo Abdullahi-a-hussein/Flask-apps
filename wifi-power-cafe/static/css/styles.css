@@ -23,7 +23,7 @@ body{
     letter-spacing: 1.5px;
     font-size: 18px;
     font-weight: 400;
-    color: var(--mf-color);
+    color: var(--box-background);
     width: 85%;
     margin: auto;
 }
@@ -237,6 +237,105 @@ font-size: 20px;
 }
 
 
+/* CAFE ENTRY STYLING  */
+
+.articles-header {
+    width: 60%;
+    margin-left: 5%;
+}
+
+.cafes-header {
+    font-family: var(--header-font);
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 17px;
+}
+
+
+.cafes-header-info{
+    width: 78%;
+    /* font-family: var(--body-font);  duplicate*/
+    font-size: 16px;
+    line-height: normal;
+}
+
+
+
+/* CAFE CARD STYLING */
+
+
+#cafes-entry {
+    width: 60%;
+    margin-left: 5%;
+}
+
+.cafe-card {
+    margin-top: 50px;
+    
+}
+.cafe-card:hover {
+    border-radius: 2px;
+    background-color: #f8f8f8;
+}
+
+
+
+.card-items{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.cafe-card-img{
+    width: 200px;
+    height: 180px;
+}
+
+
+.cafe-card-info {
+    margin-left: 15px;
+}
+
+.card-title-info{
+    margin-bottom: 17px;
+}
+
+.card-info {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.card-ratings {
+    margin-left: 80px;
+    color: #088608;
+    padding-inline-start: 3px;
+    border-style: solid;
+    border-radius: 8px;
+    border-color: #088608;
+    font-size: 12px;
+}
+
+.card-ratings-item {
+    display: inline-block;
+    vertical-align: top;
+
+}
+.fa-heart{
+    margin-top: 3px;
+}
+
+.card-ratings:hover{
+    border-color: #7fc97f;
+    border-radius: 5;
+}
+
+.available {
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.available-item {
+    margin-bottom: 17px;
+}
 
 
 
@@ -284,7 +383,6 @@ font-size: 20px;
     font-weight: 300;
     color: var(--hf-color);
 }
-
 
 
 

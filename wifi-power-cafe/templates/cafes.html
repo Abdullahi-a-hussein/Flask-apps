@@ -1,7 +1,33 @@
 {% extends 'header.html' %}
-
-
-
 {% block content %}
+<header class="articles-header">
+    <div class="cafes-header-container">
+    <h2 class="cafes-header">TORONTO</h2>
+    <p class="cafes-header-info">
+        The best work friendly cafes and restuarents in Toronto. Find places with 
+        free and reliable wifi and power outlets with comfy seating ereas.
+    </p>
+    </div>
+</header>
+
+<section id="cafes-entry" class="cafes-content">
+    <div class="cafe-card">
+        <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" class="cafe-card-img card-items">
+        <div class="cafe-card-info card-items">
+            <div class="card-title-info">
+                <p class="card-info">Sample Cafe Name</p>
+                <div class="card-ratings card-info">
+                    <i class="fa-regular fa-heart card-ratings-item"></i></i>
+                    <span class="card-ratings-item">|</span>
+                    <p class="card-ratings-item">83%</p>
+                </div>
+            </div>
+            <div class="available">
+                <p class="hours available-item"><i class="fa-regular fa-clock"></i> 8:30am - 7:30pm</p>
+                <p class="map available-item"><i class="fa-solid fa-location-arrow"></i> 123 Road Street</i></p>
+            </div>
+        </div>
+    </div>
+</section>
 {% include 'footer.html' %}
 {% endblock %}
