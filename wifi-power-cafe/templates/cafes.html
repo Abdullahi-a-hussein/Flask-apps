@@ -11,23 +11,25 @@
 </header>
 
 <section id="cafes-entry" class="cafes-content">
+    {% for cafe in cafes %}
     <div class="cafe-card">
-        <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" class="cafe-card-img card-items">
+        <img src="{{ cafe.img_url }}" alt="" class="cafe-card-img card-items">
         <div class="cafe-card-info card-items">
             <div class="card-title-info">
-                <p class="card-info">Sample Cafe Name</p>
+                <p class="card-info">{{ cafe.name }}</p>
                 <div class="card-ratings card-info">
                     <i class="fa-regular fa-heart card-ratings-item"></i></i>
                     <span class="card-ratings-item">|</span>
-                    <p class="card-ratings-item">83%</p>
+                    <p class="card-ratings-item">{{ ((cafe.wifi_rating|int + cafe.power_rating|int + cafe.coffee_rating|int)/15 * 100)|int }}%</p>
                 </div>
             </div>
             <div class="available">
-                <p class="hours available-item"><i class="fa-regular fa-clock"></i> 8:30am - 7:30pm</p>
-                <p class="map available-item"><i class="fa-solid fa-location-arrow"></i> 123 Road Street</i></p>
+                <p class="hours available-item"><i class="fa-regular fa-clock"></i> {{ cafe.opening_hours}} - {{cafe.closing_hours}}</p>
+                <p class="map available-item"><i class="fa-solid fa-location-arrow"></i>{{ cafe.location }}</i></p>
             </div>
         </div>
     </div>
+    {% endfor %}
 </section>
 {% include 'footer.html' %}
 {% endblock %}

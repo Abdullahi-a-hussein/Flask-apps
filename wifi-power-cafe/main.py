@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template, redirect, url_for, flash
+from flask import Flask, render_template, redirect, url_for, flash, request
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
@@ -54,7 +54,33 @@ def home():
 
 @app.route('/cafes')
 def cafes():
-    return render_template('cafes.html')
+    all_cafes = db.session.query(Cafe).all()
+    return render_template('cafes.html', cafes=all_cafes)
+
+@app.route("/add-cafe", methods=['GET', 'POST'])
+def add_cafe():
+    cafe_form = CafeForm()
+    if request.method == 'POST':
+        items = request.form
+        register_new_cafe(items)
+        return redirect(url_for('home'))
+    return render_template('add-cafe.html', form=cafe_form)
+
+
+
+def register_new_cafe(form):
+    new_cafe  = Cafe(name=form.get('name'),
+                     map_url=form.get('url'),
+                     img_url=form.get('img'),
+                     location="Toronto",
+                     opening_hours=form.get('opening_hours'),
+                     closing_hours=form.get('closing_hours'), 
+                     wifi_rating = form.get('wifi_rating'),
+                     power_rating=form.get('power_rating'),
+                     coffee_rating=form.get('coffee_rating')
+                    )
+    db.session.add(new_cafe)
+    db.session.commit()
 
 
 if __name__ == "__main__":

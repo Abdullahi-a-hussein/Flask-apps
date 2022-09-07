@@ -240,7 +240,7 @@ font-size: 20px;
 /* CAFE ENTRY STYLING  */
 
 .articles-header {
-    width: 60%;
+    width: 80%;
     margin-left: 5%;
 }
 
@@ -248,12 +248,12 @@ font-size: 20px;
     font-family: var(--header-font);
     font-size: 32px;
     font-weight: 600;
-    margin-bottom: 17px;
+    margin-bottom: 5px;
 }
 
 
 .cafes-header-info{
-    width: 78%;
+    width: 60%;
     /* font-family: var(--body-font);  duplicate*/
     font-size: 16px;
     line-height: normal;
@@ -265,7 +265,7 @@ font-size: 20px;
 
 
 #cafes-entry {
-    width: 60%;
+    width: 80%;
     margin-left: 5%;
 }
 
@@ -293,6 +293,7 @@ font-size: 20px;
 
 .cafe-card-info {
     margin-left: 15px;
+    width: 60%;
 }
 
 .card-title-info{
@@ -305,7 +306,7 @@ font-size: 20px;
 }
 
 .card-ratings {
-    margin-left: 80px;
+    float: right;
     color: #088608;
     padding-inline-start: 3px;
     border-style: solid;
@@ -338,15 +339,45 @@ font-size: 20px;
 }
 
 
+/* FORM STYLING  */
+
+.form{
+    text-align: center;
+}
+.form-group {
+    margin: 24px auto;
+}
+
+.control-label{
+    display: block;
+    color: var(--box-background);
+    font-family: var(--header-font);
+    font-weight: 400;
+    font-size: 20px;
+    width: 40%;
+    margin: 5px auto;
+    text-align: left;
+}
+
+.form-control {
+    display: block;
+    margin: 5px auto;
+    width: 40%;
+    height: 40px;
+    padding: 10px;
+    border-radius: 3px;
+    font-family: var(--body-font);
+}
+
+.btn-default {
+    border-color: #9a8e0c;
+    width: 40%;
+    background-color: #9a8e0c;
+    height: 45px;
+    border-radius: 5px;
+    }
 
 
-
-
-
-
-
-
-    
 
 /* FOOTER STYLING  */
 .footer {
@@ -383,6 +414,8 @@ font-size: 20px;
     font-weight: 300;
     color: var(--hf-color);
 }
+
+
 
 
 
