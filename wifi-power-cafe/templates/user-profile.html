@@ -1,0 +1,12 @@
+{% extends 'header.html' %}
+{% block content %}
+    <div class="user-card">
+        <div class="profile-header"></div>
+            <img src="{{url_for('static', filename='images/user_profile.jpeg') }}" alt="" class="user-photo">
+            <h1 class="user-header">{{ user.name|upper }}</h1>
+        </div> 
+        <a href="{{ url_for('logout') }}" class="logout-btn btn-mid">Logout</a>
+    </div> 
+{% endblock %}
+</body>
+</html>

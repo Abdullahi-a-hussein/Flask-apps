@@ -425,6 +425,23 @@ font-size: 20px;
 
 
 
+/* ***************************** USER PROFILE **************** */
+
+.user-card {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.user-header {
+    margin: 17px auto;
+    font-family: var(--header-font);
+}
+
+.logout-btn {
+    margin: 30px auto;
+}
+
+
 /* FOOTER STYLING  */
 .footer {
     background-color: var(--box-background);
@@ -458,17 +475,4 @@ font-size: 20px;
     font-weight: 300;
     color: #a1a1a172;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 

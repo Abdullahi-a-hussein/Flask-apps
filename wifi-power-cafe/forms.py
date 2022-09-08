@@ -32,3 +32,8 @@ class SignInForm(FlaskForm):
     email = EmailField(label="Email", validators=[DataRequired()], render_kw={'placeholder':'example@mail.com'})
     password = PasswordField(label="Password", validators=[DataRequired()])
     submit = SubmitField(label="Login")
+
+
+class SearchCity(FlaskForm):
+    city = StringField(label="Enter City Name", validators=[DataRequired()])
+    submit = SubmitField(label='Search')

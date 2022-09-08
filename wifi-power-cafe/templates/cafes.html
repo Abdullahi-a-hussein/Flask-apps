@@ -12,6 +12,7 @@
 
 <section id="cafes-entry" class="cafes-content">
     {% for cafe in cafes %}
+    {% if not city %}
     <a href="{{ cafe.map_url }}" class="card-link">
     <div class="cafe-card">
         <img src="{{ cafe.img_url }}" alt="" class="cafe-card-img card-items">
@@ -31,6 +32,27 @@
         </div>
     </div>
     </a>
+    {% elif cafe.location|upper == city|upper %}
+    <a href="{{ cafe.map_url }}" class="card-link">
+        <div class="cafe-card">
+            <img src="{{ cafe.img_url }}" alt="" class="cafe-card-img card-items">
+            <div class="cafe-card-info card-items">
+                <div class="card-title-info">
+                    <p class="card-info">{{ cafe.name }}</p>
+                    <div class="card-ratings card-info">
+                        <i class="fa-regular fa-heart card-ratings-item"></i></i>
+                        <span class="card-ratings-item">|</span>
+                        <p class="card-ratings-item">{{ ((cafe.wifi_rating|int + cafe.power_rating|int + cafe.coffee_rating|int)/15 * 100)|int }}%</p>
+                    </div>
+                </div>
+                <div class="available">
+                    <p class="hours available-item"><i class="fa-regular fa-clock"></i> {{ cafe.opening_hours}} - {{cafe.closing_hours}}</p>
+                    <p class="map available-item"><i class="fa-solid fa-location-arrow"></i>{{ cafe.location }}</i></p>
+                </div>
+            </div>
+        </div>
+        </a>
+        {% endif %}
     {% endfor %}
 </section>
 {% include 'footer.html' %}

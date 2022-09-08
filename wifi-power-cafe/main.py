@@ -60,12 +60,12 @@ print(YEAR)
     
 @app.route('/')
 def home():
-    return render_template('index.html', year=YEAR)
+    return render_template('index.html', year=YEAR, user=current_user)
 
 @app.route('/cafes')
 def cafes():
     all_cafes = db.session.query(Cafe).all()
-    return render_template('cafes.html', cafes=all_cafes, user=current_user)
+    return render_template('cafes.html', cafes=all_cafes, user=current_user, city=None)
 
 @app.route("/add-cafe", methods=['GET', 'POST'])
 def add_cafe():
@@ -77,7 +77,7 @@ def add_cafe():
         items = request.form
         register_new_cafe(items)
         return redirect(url_for('home'))
-    return render_template('add-cafe.html', form=cafe_form)
+    return render_template('add-cafe.html', form=cafe_form, user=current_user)
 
 @app.route('/join', methods=['GET', 'POST'])
 def register():
@@ -111,6 +111,30 @@ def login():
         return redirect(url_for('home'))
     return render_template('login.html', form=login_form, user=current_user)
 
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash('You have successfully logged out')
+    return redirect(url_for('login'))
+    
+
+@app.route('/user-profile')
+@login_required
+def user_profile():
+    #TODO: Add more options to user profile page, it currently has user phot, name and logout option
+    return render_template('user-profile.html', user=current_user)
+
+@app.route('/search-city',methods=['POST', 'GET'])
+def search_city():
+    form = SearchCity()
+    if form.validate_on_submit():
+        #TODO: This does not filter out cafes that meet the search term. To be fixed
+        city = form.city.data
+        return redirect(url_for('cafes', city=city))
+    return render_template('city.html', form=form, user=current_user)
+
         
 
 
@@ -139,3 +163,4 @@ def register_user(form):
 
 if __name__ == "__main__":
     app.run(debug=True)
+    

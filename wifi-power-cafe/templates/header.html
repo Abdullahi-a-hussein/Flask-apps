@@ -14,9 +14,13 @@
         <a href="{{ url_for('home') }}" class="navbar-elements"><i class="fa-solid fa-globe"></i> Remote Work Friendly</a>
         <div class="navbar-elements navbar-tems">
             <ul>
-                <li class="nav-item"><a href=""><i class="fa-sharp fa-solid fa-magnifying-glass"></i> Search City</a></li>
+                <li class="nav-item"><a href="{{ url_for('search_city') }}"><i class="fa-sharp fa-solid fa-magnifying-glass"></i> Search City</a></li>
                 <li class="nav-item"><a href="{{ url_for('add_cafe') }}"><i class="fa-solid fa-circle-plus"></i> Add Cafe</a></li>
-                <li class="nav-item"><a href="{{ url_for('register') }}"><i class="fa-solid fa-users"></i> Join Community</a></li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item"><a href="{{ url_for('user_profile') }}"><i class="fa-regular fa-user"></i> {{ user.name }}</a></li>
+                {% else %}
+                    <li class="nav-item"><a href="{{ url_for('register') }}"><i class="fa-solid fa-users"></i> Join Community</a></li>
+                {% endif %}
             </ul>
         </div>
     </nav>
