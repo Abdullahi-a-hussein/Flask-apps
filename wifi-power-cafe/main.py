@@ -21,6 +21,16 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 
+# CONFIGURING LOGIN MANAGER
+login_manager = LoginManager(app)
+
+# CREATING USER LOADER
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+
+
 # ---------------------------------- Database Tables Set up ------------------------------------ #
 
 class Cafe(db.Model):
@@ -55,16 +65,53 @@ def home():
 @app.route('/cafes')
 def cafes():
     all_cafes = db.session.query(Cafe).all()
-    return render_template('cafes.html', cafes=all_cafes)
+    return render_template('cafes.html', cafes=all_cafes, user=current_user)
 
 @app.route("/add-cafe", methods=['GET', 'POST'])
 def add_cafe():
     cafe_form = CafeForm()
+    if not current_user.is_authenticated:
+        flash('Please register to add new cafe')
+        return redirect(url_for('register'))
     if request.method == 'POST':
         items = request.form
         register_new_cafe(items)
         return redirect(url_for('home'))
     return render_template('add-cafe.html', form=cafe_form)
+
+@app.route('/join', methods=['GET', 'POST'])
+def register():
+    register_form = RegisterForm()
+    if request.method == 'POST':
+        email = request.form.get('email')
+        user = User.query.filter_by(email=email).first()
+        if user:
+            flash('Email registered. Please login')
+            return redirect(url_for('login'))
+        if request.form.get('password') != request.form.get('password_re'):
+            flash('Password don not match. Please re-enter password')
+            return redirect(url_for('register'))
+        user = register_user(request.form)
+        login_user(user)
+        return redirect(url_for('home'))
+    return render_template('register.html', form=register_form, user=current_user)
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    login_form = SignInForm()
+    if request.method == 'POST':
+        email = request.form.get('email')
+        user = User.query.filter_by(email=email).first()
+        if not user:
+            flash("Email not registered. Check email and try again")
+            return redirect(url_for('login'))
+        if not check_password_hash(user.password, request.form.get('password')):
+            flash('incorrect Password. Try again')
+            return redirect(url_for('login'))
+        login_user(user)
+        return redirect(url_for('home'))
+    return render_template('login.html', form=login_form, user=current_user)
+
+        
 
 
 
@@ -82,6 +129,13 @@ def register_new_cafe(form):
     db.session.add(new_cafe)
     db.session.commit()
 
+def register_user(form):
+    new_user = User(name=form.get('name'),
+                    email=form.get('email'),
+                    password=generate_password_hash(password=form.get('password'), method='pbkdf2:sha256', salt_length=8))
+    db.session.add(new_user)
+    db.session.commit()
+    return new_user
 
 if __name__ == "__main__":
     app.run(debug=True)

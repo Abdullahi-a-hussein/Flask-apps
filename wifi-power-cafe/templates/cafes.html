@@ -12,6 +12,7 @@
 
 <section id="cafes-entry" class="cafes-content">
     {% for cafe in cafes %}
+    <a href="{{ cafe.map_url }}" class="card-link">
     <div class="cafe-card">
         <img src="{{ cafe.img_url }}" alt="" class="cafe-card-img card-items">
         <div class="cafe-card-info card-items">
@@ -29,6 +30,7 @@
             </div>
         </div>
     </div>
+    </a>
     {% endfor %}
 </section>
 {% include 'footer.html' %}

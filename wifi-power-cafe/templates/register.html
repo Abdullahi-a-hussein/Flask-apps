@@ -1,0 +1,26 @@
+{% extends 'header.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block content %}
+<div class="join">
+    <div class="to-login-page">
+        <h2 class="login-in-redirect form-header">If you already have an account </h2>
+        <a href="{{ url_for('login') }}" class="to-login-link btn-mid">Login</a>
+    </div>
+
+    <h1 class="form-header"> Join The Community </h1>
+
+    {{ wtf.quick_form(form) }}
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul class=flashes>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+</div>
+
+{% endblock %}
+</body>
+</html>
