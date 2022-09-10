@@ -65,7 +65,7 @@ def home():
 @app.route('/cafes')
 def cafes():
     all_cafes = db.session.query(Cafe).all()
-    return render_template('cafes.html', cafes=all_cafes, user=current_user, city=None)
+    return render_template('cafes.html', cafes=all_cafes, user=current_user)
 
 @app.route("/add-cafe", methods=['GET', 'POST'])
 def add_cafe():
@@ -90,6 +90,9 @@ def register():
             return redirect(url_for('login'))
         if request.form.get('password') != request.form.get('password_re'):
             flash('Password don not match. Please re-enter password')
+            return redirect(url_for('register'))
+        if not valid_password(request.form.get('password')):
+            flash('password must contain\n''One uper case letter\n''one lower case letter \n''A number\n'' and at least 8 characters long')
             return redirect(url_for('register'))
         user = register_user(request.form)
         login_user(user)
@@ -143,7 +146,7 @@ def register_new_cafe(form):
     new_cafe  = Cafe(name=form.get('name'),
                      map_url=form.get('url'),
                      img_url=form.get('img'),
-                     location="Toronto",
+                     location= form.get('location'),
                      opening_hours=form.get('opening_hours'),
                      closing_hours=form.get('closing_hours'), 
                      wifi_rating = form.get('wifi_rating'),

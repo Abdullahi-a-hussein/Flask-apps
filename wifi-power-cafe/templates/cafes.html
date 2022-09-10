@@ -18,41 +18,37 @@
         <img src="{{ cafe.img_url }}" alt="" class="cafe-card-img card-items">
         <div class="cafe-card-info card-items">
             <div class="card-title-info">
-                <p class="card-info">{{ cafe.name }}</p>
-                <div class="card-ratings card-info">
-                    <i class="fa-regular fa-heart card-ratings-item"></i></i>
-                    <span class="card-ratings-item">|</span>
-                    <p class="card-ratings-item">{{ ((cafe.wifi_rating|int + cafe.power_rating|int + cafe.coffee_rating|int)/15 * 100)|int }}%</p>
-                </div>
+                <p class="card-info">{{ cafe.name|upper }}</p>
+                {%set rating = (cafe.wifi_rating|int + cafe.power_rating|int + cafe.coffee_rating|int)/15 %}
+                {% if rating >= 0.75 %}
+                    <div class="card-ratings card-info green-rating">
+                        <i class="fa-regular fa-heart card-ratings-item"></i></i>
+                        <span class="card-ratings-item">|</span>
+                        <p class="card-ratings-item">{{ (rating * 100)|int }}%</p>
+                    </div>
+                    {% elif rating >= 0.5 %}
+                    <div class="card-ratings card-info yellow-rating">
+                        <i class="fa-regular fa-heart card-ratings-item"></i></i>
+                        <span class="card-ratings-item">|</span>
+                        <p class="card-ratings-item">{{ (rating * 100)|int }}%</p>
+                    </div>
+                    {% elif  rating < 0.5  %}
+                    <div class="card-ratings card-info red-rating">
+                        <i class="fa-regular fa-heart card-ratings-item"></i></i>
+                        <span class="card-ratings-item">|</span>
+                        <p class="card-ratings-item">{{ (rating * 100)|int }}%</p>
+                    </div>
+                    {% endif %}
+
             </div>
             <div class="available">
                 <p class="hours available-item"><i class="fa-regular fa-clock"></i> {{ cafe.opening_hours}} - {{cafe.closing_hours}}</p>
-                <p class="map available-item"><i class="fa-solid fa-location-arrow"></i>{{ cafe.location }}</i></p>
+                <p class="map available-item"><i class="fa-solid fa-location-arrow"> </i>{{ cafe.location }}</i></p>
             </div>
         </div>
     </div>
     </a>
-    {% elif cafe.location|upper == city|upper %}
-    <a href="{{ cafe.map_url }}" class="card-link">
-        <div class="cafe-card">
-            <img src="{{ cafe.img_url }}" alt="" class="cafe-card-img card-items">
-            <div class="cafe-card-info card-items">
-                <div class="card-title-info">
-                    <p class="card-info">{{ cafe.name }}</p>
-                    <div class="card-ratings card-info">
-                        <i class="fa-regular fa-heart card-ratings-item"></i></i>
-                        <span class="card-ratings-item">|</span>
-                        <p class="card-ratings-item">{{ ((cafe.wifi_rating|int + cafe.power_rating|int + cafe.coffee_rating|int)/15 * 100)|int }}%</p>
-                    </div>
-                </div>
-                <div class="available">
-                    <p class="hours available-item"><i class="fa-regular fa-clock"></i> {{ cafe.opening_hours}} - {{cafe.closing_hours}}</p>
-                    <p class="map available-item"><i class="fa-solid fa-location-arrow"></i>{{ cafe.location }}</i></p>
-                </div>
-            </div>
-        </div>
-        </a>
-        {% endif %}
+    {% endif %}
     {% endfor %}
 </section>
 {% include 'footer.html' %}

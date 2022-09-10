@@ -14,6 +14,7 @@ class CafeForm(FlaskForm):
     name = StringField(label="Cafe Name", validators=[DataRequired()])
     url = StringField(label="Address on Google Maps", validators=[DataRequired(), URL()])
     img = StringField(label="Photo Link", validators=[DataRequired()])
+    location = StringField(label="Location Address", validators=[DataRequired()])
     opening_hours = StringField(label="Opening Time e.g. 10:00am", validators=[DataRequired()], render_kw={'placeholder':'10:00am'})
     closing_hours = StringField(label="Closing Time e.g. 9:30pm", validators=[DataRequired()], render_kw={'placeholder':'9:30pm'})
     wifi_rating = SelectField(label="Wifi Rating", choices=SIGNAL, validators=[DataRequired()])
@@ -22,7 +23,7 @@ class CafeForm(FlaskForm):
     submit = SubmitField(label='Add')
     
 class RegisterForm(FlaskForm):
-    name = StringField(label="Name", validators=[DataRequired()])
+    name = StringField(label="Full name", validators=[DataRequired()])
     email = EmailField(label="Email", validators=[DataRequired(), Email()])
     password = PasswordField(label="Password", validators=[DataRequired()])
     password_re = PasswordField(label="Re-enter password", validators=[DataRequired()])
