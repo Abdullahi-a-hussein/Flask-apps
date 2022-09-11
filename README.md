@@ -8,4 +8,4 @@ Contains web apps created with Flask Framework
   
   b. users can sign up/sign in and add new locations
   
-  Hosted on Heroku. (Take a look)[https://remote-work-friendly.herokuapp.com]
+  Hosted on Heroku. <a href='https://remote-work-friendly.herokuapp.com'>Take a look</a>
